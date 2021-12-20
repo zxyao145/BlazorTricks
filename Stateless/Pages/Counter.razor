@@ -1,0 +1,29 @@
+﻿@page "/counter"
+
+<div>
+    <PageTitle>Counter</PageTitle>
+
+    <h1>Counter</h1>
+
+<Stateless.Components.DisplayCount Count=@currentCount />
+<Stateless.Components.DisplayCountFull Count=@currentCount />
+
+    <Stateless.Components.DisplayCount Name="@("Less1")" Count=@currentCount />
+    <Stateless.Components.DisplayCountFull Name="@("Full1")"  Count=@currentCount />
+    
+    <Stateless.Components.DisplayCount Name="@("Less2")" Count=@currentCount />
+    <Stateless.Components.DisplayCountFull Name="@("Full2")"  Count=@currentCount />
+
+
+    <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+</div>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}

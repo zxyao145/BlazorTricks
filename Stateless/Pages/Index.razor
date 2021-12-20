@@ -1,0 +1,29 @@
+﻿@page "/"
+@using Stateless.Components
+@using Stateless.Model
+@inherits ComponentBase
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<style>
+    .person-info {
+        padding: 16px;
+        border: 1px solid red;
+        background: #efefef;
+    }
+</style>
+
+@DisplayPerson(new Person{Name="张三", Age = 128})
+
+@code {
+    RenderFragment<Person> DisplayPerson = props =>
+    @<div class="person-info">
+        <span class="author">@props.Name</span>: <span class="text">@props.Age</span>
+    </div>
+    ;
+
+}

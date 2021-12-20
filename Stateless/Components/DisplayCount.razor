@@ -1,0 +1,29 @@
+﻿@inherits StatelessComponentBase
+
+<h3>DisplayCount</h3>
+<p role="status">Current count: @Count</p>
+
+
+@code {
+    [Parameter]
+    public int Count{ get; set; }
+
+    [Parameter]
+    public String Name { get; set; }
+
+    long start;
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        start = DateTime.Now.Ticks;
+        return base.SetParametersAsync(parameters);
+    }
+
+
+    protected override void AfterRender()
+    {
+        long end = DateTime.Now.Ticks;
+        Console.WriteLine($"【{Name}】Stateless DisplayCount: {(end - start) / 1000}");
+        base.AfterRender();
+    }
+}
