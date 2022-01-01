@@ -1,0 +1,19 @@
+﻿@inherits StatelessComponentBase
+
+@code {
+
+    public void Show()
+    {
+        Container.ModalContainer?.AddModal(this);
+    }
+
+    public void Close()
+    {
+        Container.ModalContainer?.RemoveModal(this);
+    }
+
+    protected void StateHasChanged()
+    {
+        Container.ModalContainer?.ReRender();
+    }
+}

@@ -1,0 +1,27 @@
+﻿@page "/"
+<PageTitle>Index</PageTitle>
+
+<div>currentCount: @currentCount</div>
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@renderFragment
+
+@code {
+    RenderFragment? renderFragment = null;
+    private int currentCount = 1;
+
+    Components.DisplayCount displayCount = new Components.DisplayCount();
+    private void IncrementCount()
+    {
+        currentCount++;
+        displayCount.Count = currentCount;
+    }
+
+
+    public async override Task SetParametersAsync(ParameterView parameters)
+    {
+        displayCount.Count = currentCount;
+        renderFragment = displayCount.RenderFragment;
+        await base.SetParametersAsync(parameters);
+    }
+}

@@ -1,0 +1,51 @@
+﻿
+<div style="position: absolute; top:0; width: 100%; height: 100%; z-index: 9999; pointer-events: none;
+            display: flex; align-items:center; justify-content:center;">
+    @foreach(var modal in Modals)
+    {
+        <div @key="modal" style="border: 1px solid #efefef; border-radius: 4px; pointer-events: all;">
+            @modal.RenderFragment
+        </div>
+    }
+</div>
+
+@code {
+    /// <summary>
+    /// 由于需要在每个 new 的 Modal 中能够获取到container的实例，
+    ///  所以这里需要用个静态变量，在组件初始化的时候引用自身
+    /// </summary>
+    internal static Container? ModalContainer { get; private set; }
+
+
+    private List<Modal> Modals { get; init; } = new List<Modal>();
+
+    protected override Task OnInitializedAsync()
+    {
+        ModalContainer = this;
+        return base.OnInitializedAsync();
+    }
+
+    internal void AddModal(Modal modal)
+    {
+        if (!Modals.Contains(modal))
+        {
+            Modals.Add(modal);
+            StateHasChanged();
+        }
+    }
+
+    internal void RemoveModal(Modal modal)
+    {
+        if (Modals.Contains(modal))
+        {
+            Modals.Remove(modal);
+            StateHasChanged();
+        }
+    }
+
+    internal void ReRender()
+    {
+        StateHasChanged();
+    }
+
+}

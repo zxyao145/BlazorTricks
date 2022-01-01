@@ -1,0 +1,7 @@
+﻿@page "/modalDemo2"
+@using Instantiation.Components.DyModal2
+
+<PageTitle>Modal Demo2</PageTitle>
+
+<button class="btn btn-primary" @onclick="()=>{Container2.ModalContainer?.AddModal<Modal3>();}">Open DynamicComponentModalIns</button>
+<button class="btn btn-primary" @onclick="()=>{Container2.ModalContainer?.RemoveModal<Modal3>();}">Close DynamicComponentModalIns</button>

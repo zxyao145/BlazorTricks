@@ -1,0 +1,14 @@
+﻿<h3>Modal3</h3>
+
+@currentCount
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+        StateHasChanged();
+    }
+}

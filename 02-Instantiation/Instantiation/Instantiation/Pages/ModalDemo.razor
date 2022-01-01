@@ -1,0 +1,16 @@
+﻿@page "/modalDemo"
+@using Instantiation.Components.DyModal1
+
+<PageTitle>Modal Demo</PageTitle>
+
+<button class="btn btn-primary" @onclick="()=>{modal1.Show();}">OpenModal1</button>
+<button class="btn btn-primary" @onclick="()=>{modal1.Close();}">CloseModal1</button>
+
+<button class="btn btn-primary" @onclick="()=>{modal2.Show();}">OpenModal2</button>
+<button class="btn btn-primary" @onclick="()=>{modal2.Close();}">CloseModal2</button>
+
+
+@code {
+    Modal modal1 = new Modal1();
+    Modal modal2 = new Modal2();
+}
