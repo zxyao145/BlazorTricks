@@ -1,0 +1,24 @@
+﻿@page "/"
+@using OneContainerDemo.Components
+@using OneContainerDemo.Options
+
+<PageTitle>Index</PageTitle>
+
+<button @onclick="OpenModal">Open Modal</button>
+<button @onclick="OpenNotification">Open Notification</button>
+
+@code{
+    void OpenModal()
+    {
+        var option = new ModalOption();
+        option.RenderFragment =@<div> modal </div>;
+        ModalContainer.Instance?.Add(option);
+    }
+
+    void OpenNotification()
+    {
+        var option = new NotificationOption();
+        option.RenderFragment =@<div> Notification </div>;
+        NotifycationContainer.Instance?.Add(option);
+    }
+}
